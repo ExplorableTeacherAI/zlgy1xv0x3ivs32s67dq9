@@ -1,4 +1,391 @@
 {
-  "version": 2,
-  "blockIds": []
+  "version": 3,
+  "blockIds": [
+    "orientation-title",
+    "orientation-hook",
+    "orientation-promise",
+    "taking-sample-heading",
+    "taking-sample-worked-example",
+    "taking-sample-visual",
+    "taking-sample-question",
+    "taking-sample-practice-mean",
+    "taking-sample-practice-varies",
+    "average-not-person-heading",
+    "average-not-person-explanation",
+    "average-not-person-question",
+    "average-not-person-visual",
+    "average-not-person-practice-claim",
+    "average-not-person-practice-count",
+    "many-samples-heading",
+    "many-samples-explanation",
+    "many-samples-question",
+    "many-samples-visual",
+    "many-samples-practice-shape",
+    "many-samples-practice-single",
+    "bigger-samples-heading",
+    "bigger-samples-explanation",
+    "bigger-samples-question",
+    "bigger-samples-visual",
+    "bigger-samples-practice-choice",
+    "bigger-samples-practice-clubs",
+    "wrapping-up-heading",
+    "wrapping-up-summary",
+    "wrapping-up-next"
+  ],
+  "rows": [
+    {
+      "id": "layout-orientation-title",
+      "type": "stack",
+      "columns": [
+        [
+          "orientation-title"
+        ]
+      ],
+      "props": {
+        "maxWidth": "xl"
+      }
+    },
+    {
+      "id": "layout-orientation-hook",
+      "type": "stack",
+      "columns": [
+        [
+          "orientation-hook"
+        ]
+      ],
+      "props": {
+        "maxWidth": "xl"
+      }
+    },
+    {
+      "id": "layout-orientation-promise",
+      "type": "stack",
+      "columns": [
+        [
+          "orientation-promise"
+        ]
+      ],
+      "props": {
+        "maxWidth": "xl"
+      }
+    },
+    {
+      "id": "layout-taking-sample-heading",
+      "type": "stack",
+      "columns": [
+        [
+          "taking-sample-heading"
+        ]
+      ],
+      "props": {
+        "maxWidth": "xl"
+      }
+    },
+    {
+      "id": "layout-taking-sample-worked-example",
+      "type": "split",
+      "columns": [
+        [
+          "taking-sample-worked-example"
+        ],
+        [
+          "taking-sample-visual"
+        ]
+      ],
+      "props": {
+        "ratio": "1:1",
+        "gap": "lg",
+        "reverse": false,
+        "align": "start"
+      }
+    },
+    {
+      "id": "layout-taking-sample-question",
+      "type": "stack",
+      "columns": [
+        [
+          "taking-sample-question"
+        ]
+      ],
+      "props": {
+        "maxWidth": "xl"
+      }
+    },
+    {
+      "id": "layout-taking-sample-practice-mean",
+      "type": "stack",
+      "columns": [
+        [
+          "taking-sample-practice-mean"
+        ]
+      ],
+      "props": {
+        "maxWidth": "xl"
+      }
+    },
+    {
+      "id": "layout-taking-sample-practice-varies",
+      "type": "stack",
+      "columns": [
+        [
+          "taking-sample-practice-varies"
+        ]
+      ],
+      "props": {
+        "maxWidth": "xl"
+      }
+    },
+    {
+      "id": "layout-average-not-person-heading",
+      "type": "stack",
+      "columns": [
+        [
+          "average-not-person-heading"
+        ]
+      ],
+      "props": {
+        "maxWidth": "xl"
+      }
+    },
+    {
+      "id": "layout-average-not-person-explanation",
+      "type": "stack",
+      "columns": [
+        [
+          "average-not-person-explanation"
+        ]
+      ],
+      "props": {
+        "maxWidth": "xl"
+      }
+    },
+    {
+      "id": "layout-average-not-person-question",
+      "type": "stack",
+      "columns": [
+        [
+          "average-not-person-question"
+        ]
+      ],
+      "props": {
+        "maxWidth": "xl"
+      }
+    },
+    {
+      "id": "layout-average-not-person-visual",
+      "type": "stack",
+      "columns": [
+        [
+          "average-not-person-visual"
+        ]
+      ],
+      "props": {
+        "maxWidth": "xl"
+      }
+    },
+    {
+      "id": "layout-average-not-person-practice-claim",
+      "type": "stack",
+      "columns": [
+        [
+          "average-not-person-practice-claim"
+        ]
+      ],
+      "props": {
+        "maxWidth": "xl"
+      }
+    },
+    {
+      "id": "layout-average-not-person-practice-count",
+      "type": "stack",
+      "columns": [
+        [
+          "average-not-person-practice-count"
+        ]
+      ],
+      "props": {
+        "maxWidth": "xl"
+      }
+    },
+    {
+      "id": "layout-many-samples-heading",
+      "type": "stack",
+      "columns": [
+        [
+          "many-samples-heading"
+        ]
+      ],
+      "props": {
+        "maxWidth": "xl"
+      }
+    },
+    {
+      "id": "layout-many-samples-explanation",
+      "type": "stack",
+      "columns": [
+        [
+          "many-samples-explanation"
+        ]
+      ],
+      "props": {
+        "maxWidth": "xl"
+      }
+    },
+    {
+      "id": "layout-many-samples-question",
+      "type": "stack",
+      "columns": [
+        [
+          "many-samples-question"
+        ]
+      ],
+      "props": {
+        "maxWidth": "xl"
+      }
+    },
+    {
+      "id": "layout-many-samples-visual",
+      "type": "stack",
+      "columns": [
+        [
+          "many-samples-visual"
+        ]
+      ],
+      "props": {
+        "maxWidth": "xl"
+      }
+    },
+    {
+      "id": "layout-many-samples-practice-shape",
+      "type": "stack",
+      "columns": [
+        [
+          "many-samples-practice-shape"
+        ]
+      ],
+      "props": {
+        "maxWidth": "xl"
+      }
+    },
+    {
+      "id": "layout-many-samples-practice-single",
+      "type": "stack",
+      "columns": [
+        [
+          "many-samples-practice-single"
+        ]
+      ],
+      "props": {
+        "maxWidth": "xl"
+      }
+    },
+    {
+      "id": "layout-bigger-samples-heading",
+      "type": "stack",
+      "columns": [
+        [
+          "bigger-samples-heading"
+        ]
+      ],
+      "props": {
+        "maxWidth": "xl"
+      }
+    },
+    {
+      "id": "layout-bigger-samples-explanation",
+      "type": "stack",
+      "columns": [
+        [
+          "bigger-samples-explanation"
+        ]
+      ],
+      "props": {
+        "maxWidth": "xl"
+      }
+    },
+    {
+      "id": "layout-bigger-samples-question",
+      "type": "stack",
+      "columns": [
+        [
+          "bigger-samples-question"
+        ]
+      ],
+      "props": {
+        "maxWidth": "xl"
+      }
+    },
+    {
+      "id": "layout-bigger-samples-visual",
+      "type": "stack",
+      "columns": [
+        [
+          "bigger-samples-visual"
+        ]
+      ],
+      "props": {
+        "maxWidth": "xl"
+      }
+    },
+    {
+      "id": "layout-bigger-samples-practice-choice",
+      "type": "stack",
+      "columns": [
+        [
+          "bigger-samples-practice-choice"
+        ]
+      ],
+      "props": {
+        "maxWidth": "xl"
+      }
+    },
+    {
+      "id": "layout-bigger-samples-practice-clubs",
+      "type": "stack",
+      "columns": [
+        [
+          "bigger-samples-practice-clubs"
+        ]
+      ],
+      "props": {
+        "maxWidth": "xl"
+      }
+    },
+    {
+      "id": "layout-wrapping-up-heading",
+      "type": "stack",
+      "columns": [
+        [
+          "wrapping-up-heading"
+        ]
+      ],
+      "props": {
+        "maxWidth": "xl"
+      }
+    },
+    {
+      "id": "layout-wrapping-up-summary",
+      "type": "stack",
+      "columns": [
+        [
+          "wrapping-up-summary"
+        ]
+      ],
+      "props": {
+        "maxWidth": "xl"
+      }
+    },
+    {
+      "id": "layout-wrapping-up-next",
+      "type": "stack",
+      "columns": [
+        [
+          "wrapping-up-next"
+        ]
+      ],
+      "props": {
+        "maxWidth": "xl"
+      }
+    }
+  ]
 }
