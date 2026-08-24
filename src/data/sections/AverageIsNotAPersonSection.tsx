@@ -2,7 +2,8 @@ import { type ReactElement } from "react";
 import { Block } from "@/components/templates";
 import { StackLayout } from "@/components/layouts";
 import { EditableH2, EditableParagraph } from "@/components/atoms";
-import { VisualOptionCards } from "@/components/organisms";
+import { RehearsalHoursMeanExplorer } from "./visuals/RehearsalHoursMeanExplorer";
+import { PracticeQuestion } from "./practice/PracticeQuestion";
 
 export const averageIsNotAPersonBlocks: ReactElement[] = [
     <StackLayout key="layout-average-not-person-heading" maxWidth="xl">
@@ -26,45 +27,53 @@ export const averageIsNotAPersonBlocks: ReactElement[] = [
     <StackLayout key="layout-average-not-person-question" maxWidth="xl">
         <Block id="average-not-person-question" padding="sm">
             <EditableParagraph id="para-average-not-person-question" blockId="average-not-person-question">
-                The same goes for the hours a drama group rehearses or the marks a
-                choir scores at a festival. So where does the mean sit compared with
-                the real values behind it?
+                Below, five performers in a drama group sit on a line of rehearsal
+                hours, with their mean marked in blue underneath. Drag any performer
+                and watch the blue marker answer back. Try to make it land exactly on
+                someone.
             </EditableParagraph>
         </Block>
     </StackLayout>,
 
     <StackLayout key="layout-average-not-person-visual" maxWidth="xl">
-        <Block id="average-not-person-visual" padding="sm">
-            <VisualOptionCards
-                blockId="average-not-person-visual"
-                intro="Pick how your students will see that the mean is a new number, not one of the values."
-                cards={[
-                    {
-                        id: "dots-and-marker",
-                        title: "Five rehearsal hours as dots on a line, with the mean marked separately underneath",
-                        looks: "Five dots spread along a number line for the five performers, and a clearly different marker below the line showing where the mean falls.",
-                        manipulate: "Drag any performer's dot and watch the mean marker shift, usually landing in a gap where no dot sits",
-                        reveals: "The mean moves whenever any value moves, and it rarely lands on top of a real value",
-                        targetsMisconception: "Students confuse an average of a sample with a single data value",
-                        recommended: true,
-                    },
-                    {
-                        id: "levelling-bars",
-                        title: "Five bars of different heights that level out to one shared height",
-                        looks: "Five bars, one per performer, with a dashed line across them at the mean height.",
-                        manipulate: "Press a button to pour the bars level and watch every bar become the same height",
-                        reveals: "The mean is the height everyone would have if the total were shared out equally, which is usually nobody's real height",
-                        targetsMisconception: "Students confuse an average of a sample with a single data value",
-                    },
-                    {
-                        id: "guess-the-person",
-                        title: "A challenge that asks students to find the performer whose score equals the mean",
-                        looks: "Five named performers with their scores, and the mean shown in a box the students can compare against.",
-                        manipulate: "Click the performer they think matches the mean and see how far off each one is",
-                        reveals: "No performer matches, and the gaps above the mean exactly cancel the gaps below it",
-                        targetsMisconception: "Students confuse an average of a sample with a single data value",
-                    },
+        <Block id="average-not-person-visual" padding="sm" hasVisualization>
+            <RehearsalHoursMeanExplorer />
+        </Block>
+    </StackLayout>,
+
+    <StackLayout key="layout-average-not-person-practice-claim" maxWidth="xl">
+        <Block id="average-not-person-practice-claim" padding="sm">
+            <PracticeQuestion
+                prompt="A drama group of five rehearsed for a mean of 5.7 hours. Rahul says: so one of them must have rehearsed for 5.7 hours. Is he right?"
+                choices={[
+                    { id: "always-a-value", label: "Yes — the mean is always one of the values in the group" },
+                    { id: "may-match-nobody", label: "Not necessarily — the mean comes from all five and may match nobody" },
+                    { id: "never-a-value", label: "No — the mean can never be equal to one of the values" },
                 ]}
+                correctChoiceId="may-match-nobody"
+                correctFeedback="Exactly. The mean is built from all five hours at once. It can happen to land on somebody, but there is no reason it has to."
+                hints={[
+                    "Drag the dots above and watch the blue marker. Does it sit on a performer, or between them?",
+                    "You may manage to make the marker land on a dot — so it is possible, just not guaranteed. Which option says that?",
+                ]}
+                finalExplanation="The mean is worked out from every value together, so it usually falls in a gap between them, though it can coincide with one by chance. That is why Rahul cannot conclude anyone rehearsed 5.7 hours."
+            />
+        </Block>
+    </StackLayout>,
+
+    <StackLayout key="layout-average-not-person-practice-count" maxWidth="xl">
+        <Block id="average-not-person-practice-count" padding="sm">
+            <PracticeQuestion
+                prompt="Five netball players score 4, 9, 2, 7 and 3 goals. Work out the mean score, then count how many of the five players scored exactly that number of goals. Enter that count."
+                numericAnswer={0}
+                tolerance={0.01}
+                unit="players"
+                correctFeedback="Correct — the mean is 5 goals, and nobody scored 5. The mean describes the team's scoring, not any single player's."
+                hints={[
+                    "First find the mean: add 4 + 9 + 2 + 7 + 3, then divide by 5.",
+                    "The mean is 5 goals. Now look back at the list — is 5 anywhere in it?",
+                ]}
+                finalExplanation="The goals total 25, and 25 ÷ 5 = 5 goals. None of the five players scored 5, so the answer is 0. Drag the dots in the line above and you will see the same thing: the marker keeps landing in the gaps."
             />
         </Block>
     </StackLayout>,
