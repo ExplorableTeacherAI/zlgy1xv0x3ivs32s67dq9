@@ -10,6 +10,7 @@
     "block-1787569973457",
     "taking-sample-question",
     "taking-sample-practice-mean",
+    "block-1787570007115",
     "taking-sample-practice-varies",
     "average-not-person-heading",
     "average-not-person-explanation",
@@ -125,6 +126,18 @@
       "columns": [
         [
           "taking-sample-practice-mean"
+        ]
+      ],
+      "props": {
+        "maxWidth": "xl"
+      }
+    },
+    {
+      "id": "layout-taking-sample-practice-median-spread",
+      "type": "stack",
+      "columns": [
+        [
+          "block-1787570007115"
         ]
       ],
       "props": {
