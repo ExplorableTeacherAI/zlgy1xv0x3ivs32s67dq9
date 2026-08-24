@@ -5,6 +5,7 @@ import { EditableH2, EditableParagraph, Table } from "@/components/atoms";
 import { SquadSampleMeanExplorer } from "./visuals/SquadSampleMeanExplorer";
 import { PracticeQuestion } from "./practice/PracticeQuestion";
 import { PracticeQuestionSet } from "./practice/PracticeQuestionSet";
+import { SampleMeanOptionsDiagram } from "./visuals/SampleMeanOptionsDiagram";
 
 export const takingASampleBlocks: ReactElement[] = [
     <StackLayout key="layout-taking-sample-heading" maxWidth="xl">
@@ -173,6 +174,8 @@ export const takingASampleBlocks: ReactElement[] = [
                     "The means you collected were all different, yet none was wildly far from the others. Which option describes that?",
                 ]}
                 finalExplanation="Different handfuls give different totals, so the means differ — but every handful comes from the same squad, so they all land near the squad's own average. Keep pressing Pick a new five above to see it happen."
+                explanationCaption="What each answer would look like on a time line:"
+                explanationVisual={<SampleMeanOptionsDiagram />}
             />
         </Block>
     </StackLayout>,

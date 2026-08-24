@@ -25,6 +25,10 @@ export interface PracticeQuestionProps {
     hints: string[];
     /** Shown once every hint has been used. */
     finalExplanation: string;
+    /** Optional picture explaining the answer, revealed once the student has responded. */
+    explanationVisual?: ReactNode;
+    /** Caption shown above the explanation picture. */
+    explanationCaption?: string;
 }
 
 export const PracticeQuestion = ({
@@ -37,6 +41,8 @@ export const PracticeQuestion = ({
     correctFeedback,
     hints,
     finalExplanation,
+    explanationVisual,
+    explanationCaption,
 }: PracticeQuestionProps) => {
     const [typedAnswer, setTypedAnswer] = useState("");
     const [selectedChoice, setSelectedChoice] = useState("");
@@ -111,6 +117,17 @@ export const PracticeQuestion = ({
                     }`}
                 >
                     {feedback}
+                </div>
+            )}
+
+            {explanationVisual && (isCorrect || attempts > 0) && (
+                <div className="mt-3">
+                    {explanationCaption && (
+                        <div className="mb-2 text-sm font-medium text-slate-700">
+                            {explanationCaption}
+                        </div>
+                    )}
+                    {explanationVisual}
                 </div>
             )}
         </div>
