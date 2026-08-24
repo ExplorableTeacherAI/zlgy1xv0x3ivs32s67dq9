@@ -7,6 +7,7 @@
     "taking-sample-heading",
     "taking-sample-worked-example",
     "taking-sample-visual",
+    "block-1787569973457",
     "taking-sample-question",
     "taking-sample-practice-mean",
     "taking-sample-practice-varies",
@@ -88,6 +89,18 @@
         [
           "taking-sample-worked-example",
           "taking-sample-visual"
+        ]
+      ],
+      "props": {
+        "maxWidth": "xl"
+      }
+    },
+    {
+      "id": "layout-taking-sample-more-examples",
+      "type": "stack",
+      "columns": [
+        [
+          "block-1787569973457"
         ]
       ],
       "props": {

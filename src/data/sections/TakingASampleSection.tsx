@@ -1,7 +1,7 @@
 import { type ReactElement } from "react";
 import { Block } from "@/components/templates";
 import { StackLayout } from "@/components/layouts";
-import { EditableH2, EditableParagraph } from "@/components/atoms";
+import { EditableH2, EditableParagraph, Table } from "@/components/atoms";
 import { SquadSampleMeanExplorer } from "./visuals/SquadSampleMeanExplorer";
 import { PracticeQuestion } from "./practice/PracticeQuestion";
 
@@ -38,6 +38,47 @@ export const takingASampleBlocks: ReactElement[] = [
     <StackLayout key="layout-taking-sample-visual" maxWidth="xl">
         <Block id="taking-sample-visual" padding="sm" hasVisualization>
             <SquadSampleMeanExplorer />
+        </Block>
+    </StackLayout>,
+
+    <StackLayout key="layout-taking-sample-more-examples" maxWidth="xl">
+        <Block id="block-1787569973457" padding="sm">
+            <Table
+                columns={[
+                    { header: "Sample", align: "left", width: 110 },
+                    { header: "The five times picked (seconds)", align: "left" },
+                    { header: "Total", align: "center", width: 90 },
+                    { header: "Sample mean", align: "center", width: 130 },
+                ]}
+                rows={[
+                    {
+                        cells: [
+                            "Sample A",
+                            "12.1, 13.6, 19.2, 14.0, 15.6",
+                            "74.5",
+                            "74.5 ÷ 5 = 14.9",
+                        ],
+                    },
+                    {
+                        cells: [
+                            "Sample B",
+                            "16.3, 12.8, 13.5, 18.1, 14.8",
+                            "75.5",
+                            "75.5 ÷ 5 = 15.1",
+                        ],
+                    },
+                    {
+                        cells: [
+                            "Sample C",
+                            "11.9, 13.2, 12.4, 20.5, 14.5",
+                            "72.5",
+                            "72.5 ÷ 5 = 14.5",
+                        ],
+                    },
+                ]}
+                color="#2563eb"
+                caption="Three more samples of five taken from the same squad of 200 runners"
+            />
         </Block>
     </StackLayout>,
 
