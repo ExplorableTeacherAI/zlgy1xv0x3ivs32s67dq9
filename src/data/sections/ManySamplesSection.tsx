@@ -2,7 +2,8 @@ import { type ReactElement } from "react";
 import { Block } from "@/components/templates";
 import { StackLayout } from "@/components/layouts";
 import { EditableH2, EditableParagraph } from "@/components/atoms";
-import { VisualOptionCards } from "@/components/organisms";
+import { SampleMeansPileExplorer } from "./visuals/SampleMeansPileExplorer";
+import { PracticeQuestion } from "./practice/PracticeQuestion";
 
 export const manySamplesBlocks: ReactElement[] = [
     <StackLayout key="layout-many-samples-heading" maxWidth="xl">
@@ -27,44 +28,55 @@ export const manySamplesBlocks: ReactElement[] = [
         <Block id="many-samples-question" padding="sm">
             <EditableParagraph id="para-many-samples-question" blockId="many-samples-question">
                 So collect a hundred of those means and treat them as a set of numbers
-                in their own right. The sprint times themselves are lopsided, with that
-                long straggle of slower runners. What shape do the means make?
+                in their own right. Choose the starting data at the top below — lopsided
+                sprint times, two-humped audition scores, or flat rehearsal hours — then
+                pour in the samples and watch the blue pile build underneath.
             </EditableParagraph>
         </Block>
     </StackLayout>,
 
     <StackLayout key="layout-many-samples-visual" maxWidth="xl">
-        <Block id="many-samples-visual" padding="sm">
-            <VisualOptionCards
-                blockId="many-samples-visual"
-                intro="Pick how your students will collect many sample means and see the shape they form."
-                cards={[
-                    {
-                        id: "stacking-means",
-                        title: "Sample means dropping one by one and stacking into a hump beside the lopsided original data",
-                        looks: "The lopsided sprint times on the left. On the right, an empty space that fills up as each new sample mean drops into place and stacks on the ones near it.",
-                        manipulate: "Press once for a single sample, or hold to pour in a hundred, and watch the pile build",
-                        reveals: "The means pile up in a smooth hump around the squad's true average even though the original times are nothing like a hump",
-                        targetsMisconception: "Students think one sample's average is the whole answer, so no spread exists",
-                        recommended: true,
-                    },
-                    {
-                        id: "swap-the-source",
-                        title: "The same stacking pile, but students choose what the original data looks like first",
-                        looks: "A choice of starting data such as sprint times, audition scores, or rehearsal hours, each a different lopsided or double-humped shape, with the pile of means building underneath.",
-                        manipulate: "Switch the starting data and pour in a fresh hundred means each time",
-                        reveals: "Whatever the original shape, the pile of means always comes out as the same smooth hump",
-                        targetsMisconception: "Students think one sample's average is the whole answer, so no spread exists",
-                    },
-                    {
-                        id: "sample-trail",
-                        title: "A running trail of sample means plotted in the order they were taken",
-                        looks: "Each new sample mean added as a point along a track, with the band it wanders inside drawn behind it.",
-                        manipulate: "Keep taking samples and watch how far the means wander from one another",
-                        reveals: "The means bounce around within a band rather than repeating one fixed value, and they cluster thickest in the middle",
-                        targetsMisconception: "Students think one sample's average is the whole answer, so no spread exists",
-                    },
+        <Block id="many-samples-visual" padding="sm" hasVisualization>
+            <SampleMeansPileExplorer />
+        </Block>
+    </StackLayout>,
+
+    <StackLayout key="layout-many-samples-practice-shape" maxWidth="xl">
+        <Block id="many-samples-practice-shape" padding="sm">
+            <PracticeQuestion
+                prompt="A school switches its starting data from sprint times to audition scores, which sit in two separate humps, and collects 100 sample means of five. What shape should the pile of means take?"
+                choices={[
+                    { id: "copies-two-humps", label: "Two humps, copying the shape of the audition scores" },
+                    { id: "single-smooth-hump", label: "One smooth hump near the middle of the scores" },
+                    { id: "flat", label: "Flat, with the means spread evenly across the whole range" },
                 ]}
+                correctChoiceId="single-smooth-hump"
+                correctFeedback="Yes. A sample of five usually catches performers from both humps, so its mean lands between them. That is the Central Limit Theorem: the pile of means comes out smooth and hump-shaped whatever the starting data looked like."
+                hints={[
+                    "Press the Audition scores button above, then pour in 100 samples and look at the blue pile.",
+                    "Compare the two-humped grey chart at the top with the blue pile below it. Do they have the same shape?",
+                ]}
+                finalExplanation="Try all three starting data sets above. However lopsided, two-humped or flat the grey chart is, the blue pile of means always builds into a single smooth hump around the middle."
+            />
+        </Block>
+    </StackLayout>,
+
+    <StackLayout key="layout-many-samples-practice-single" maxWidth="xl">
+        <Block id="many-samples-practice-single" padding="sm">
+            <PracticeQuestion
+                prompt="Priya takes one random sample of five sprinters and gets a mean of 14.1 seconds. She concludes that the squad's average is 14.1 seconds. What is wrong with that?"
+                choices={[
+                    { id: "nothing-wrong", label: "Nothing — her sample mean is the squad's average" },
+                    { id: "estimate-with-spread", label: "Her mean is only one of many possible means, so it is an estimate that could be a bit high or low" },
+                    { id: "should-use-fastest", label: "She should have used the fastest runner's time instead" },
+                ]}
+                correctChoiceId="estimate-with-spread"
+                correctFeedback="Right. Her 14.1 is one blue dot in a whole pile. The pile clusters near the squad's true average, but individual dots land either side of it."
+                hints={[
+                    "Press Take one sample above a few times and note how much the mean jumps around.",
+                    "Your single samples landed in different places each time. Can any one of them be the exact truth about all 200 runners?",
+                ]}
+                finalExplanation="Every sample of five gives a slightly different mean — that is the width of the blue pile above. Priya's 14.1 is a reasonable estimate of the squad's average, not the answer itself."
             />
         </Block>
     </StackLayout>,
