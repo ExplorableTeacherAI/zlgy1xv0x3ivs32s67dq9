@@ -74,8 +74,20 @@ export interface VariableDefinition {
  */
 export const variableDefinitions: Record<string, VariableDefinition> = {
     // ========================================
-    // ADD YOUR VARIABLES HERE
+    // LESSON VARIABLES
     // ========================================
+
+    sampleSize: {
+        defaultValue: 5,
+        type: 'number',
+        label: 'Runners in each sample',
+        description: 'How many runners go into each random sample before the mean is worked out',
+        unit: 'runners',
+        min: 2,
+        max: 30,
+        step: 1,
+        color: '#2563eb',
+    },
 
     // Uncomment and modify these examples for your lesson:
 

@@ -2,7 +2,8 @@ import { type ReactElement } from "react";
 import { Block } from "@/components/templates";
 import { StackLayout } from "@/components/layouts";
 import { EditableH2, EditableParagraph } from "@/components/atoms";
-import { VisualOptionCards } from "@/components/organisms";
+import { SampleSizeSpreadExplorer } from "./visuals/SampleSizeSpreadExplorer";
+import { PracticeQuestion } from "./practice/PracticeQuestion";
 
 export const biggerSamplesBlocks: ReactElement[] = [
     <StackLayout key="layout-bigger-samples-heading" maxWidth="xl">
@@ -16,9 +17,9 @@ export const biggerSamplesBlocks: ReactElement[] = [
     <StackLayout key="layout-bigger-samples-explanation" maxWidth="xl">
         <Block id="bigger-samples-explanation" padding="sm">
             <EditableParagraph id="para-bigger-samples-explanation" blockId="bigger-samples-explanation">
-                Now change how many runners go into each handful. Pick only two, and
-                one unusually fast sprinter drags that mean a long way. Pick twenty,
-                and a fast one is likely to be balanced by a slow one.
+                Now change how many runners go into each handful. Pick only two, and one
+                unusually fast sprinter drags that mean a long way. Pick twenty, and a
+                fast one is likely to be balanced by a slow one.
             </EditableParagraph>
         </Block>
     </StackLayout>,
@@ -26,44 +27,55 @@ export const biggerSamplesBlocks: ReactElement[] = [
     <StackLayout key="layout-bigger-samples-question" maxWidth="xl">
         <Block id="bigger-samples-question" padding="sm">
             <EditableParagraph id="para-bigger-samples-question" blockId="bigger-samples-question">
-                So does using bigger handfuls make the collected means spread out more,
-                or squeeze them closer together? Try it before you decide.
+                Before you touch the slider below, decide: does using bigger handfuls
+                spread the means out more, or squeeze them closer together? Then drag it
+                from 2 up to 30 and watch the red width bar answer you.
             </EditableParagraph>
         </Block>
     </StackLayout>,
 
     <StackLayout key="layout-bigger-samples-visual" maxWidth="xl">
-        <Block id="bigger-samples-visual" padding="sm">
-            <VisualOptionCards
-                blockId="bigger-samples-visual"
-                intro="Pick how your students will test what sample size does to the spread of the means."
-                cards={[
-                    {
-                        id: "size-slider",
-                        title: "A slider for sample size, with the hump of means reshaping as it moves",
-                        looks: "The pile of collected sample means, with a control for how many performers go into each sample and a marker showing how wide the pile is.",
-                        manipulate: "Slide the sample size from 2 up to 30 and watch the hump redraw itself each time",
-                        reveals: "Larger samples squeeze the means into a taller, narrower hump around the same centre",
-                        targetsMisconception: "Students think a bigger sample gives more spread-out averages, not less",
-                        recommended: true,
-                    },
-                    {
-                        id: "side-by-side-humps",
-                        title: "Two piles side by side, one built from small samples and one from large",
-                        looks: "Two humps drawn on the same scale, one labelled samples of 2 and one labelled samples of 20, filling up together.",
-                        manipulate: "Pour in more samples and compare how far each pile spreads",
-                        reveals: "Both piles sit over the same centre, but the large-sample pile is clearly the narrower of the two",
-                        targetsMisconception: "Students think a bigger sample gives more spread-out averages, not less",
-                    },
-                    {
-                        id: "prediction-first",
-                        title: "A predict-then-check activity on sample size and spread",
-                        looks: "Three sketched humps of different widths offered as predictions, and the real pile of means built afterwards to compare against the choice.",
-                        manipulate: "Choose the hump they expect for samples of 20, then run the samples and see which one appears",
-                        reveals: "The instinct that bigger samples wander more is wrong; the extra values steady the mean instead",
-                        targetsMisconception: "Students think a bigger sample gives more spread-out averages, not less",
-                    },
+        <Block id="bigger-samples-visual" padding="sm" hasVisualization>
+            <SampleSizeSpreadExplorer />
+        </Block>
+    </StackLayout>,
+
+    <StackLayout key="layout-bigger-samples-practice-choice" maxWidth="xl">
+        <Block id="bigger-samples-practice-choice" padding="sm">
+            <PracticeQuestion
+                prompt="A coach wants sample means that land close to the squad's true average nearly every time. Should each sample contain 4 runners or 25 runners, and why?"
+                choices={[
+                    { id: "four-fewer-to-go-wrong", label: "4 runners — fewer times means less can go wrong, so the means vary less" },
+                    { id: "twenty-five-balance-out", label: "25 runners — fast and slow runners balance each other, so the means vary less" },
+                    { id: "no-difference", label: "Either — the number in each sample makes no difference to the means" },
                 ]}
+                correctChoiceId="twenty-five-balance-out"
+                correctFeedback="Exactly. With 25 runners in a sample, one unusually slow time is outweighed by the rest, so the means huddle tightly around the squad's average."
+                hints={[
+                    "Set the slider above to 4, note the width of the red bar, then set it to 25 and compare.",
+                    "The red bar got shorter as the sample grew, so bigger samples give means that vary less. Which option says that?",
+                ]}
+                finalExplanation="Bigger samples give a narrower pile, not a wider one: extra runners give the fast and slow ones a chance to cancel out. Slide from 2 to 30 above and watch the red width bar shrink."
+            />
+        </Block>
+    </StackLayout>,
+
+    <StackLayout key="layout-bigger-samples-practice-clubs" maxWidth="xl">
+        <Block id="bigger-samples-practice-clubs" padding="sm">
+            <PracticeQuestion
+                prompt="Two clubs estimate their squad's average time. Club A averages 3 runners; Club B averages 20. Whose single estimate is more likely to land within 0.2 seconds of the truth?"
+                choices={[
+                    { id: "club-a", label: "Club A, because a small sample is easier to control" },
+                    { id: "club-b", label: "Club B, because means of larger samples cluster tightly around the true average" },
+                    { id: "equal", label: "Both are equally likely — it is random either way" },
+                ]}
+                correctChoiceId="club-b"
+                correctFeedback="Right. Club B's means sit in a narrow pile around the squad average, so a single one of them is much more likely to be close to it."
+                hints={[
+                    "Set the slider to 3 above and see how far the means stray from the dashed squad average, then set it to 20.",
+                    "At 20 the pile was far narrower than at 3. Which club's single estimate is therefore safer?",
+                ]}
+                finalExplanation="Both clubs are sampling at random, but Club B's larger samples produce means packed tightly around the squad average, so Club B's estimate is far more likely to be within 0.2 seconds."
             />
         </Block>
     </StackLayout>,
