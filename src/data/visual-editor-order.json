@@ -83,20 +83,15 @@
     },
     {
       "id": "layout-taking-sample-worked-example",
-      "type": "split",
+      "type": "stack",
       "columns": [
         [
-          "taking-sample-worked-example"
-        ],
-        [
+          "taking-sample-worked-example",
           "taking-sample-visual"
         ]
       ],
       "props": {
-        "ratio": "1:1",
-        "gap": "lg",
-        "reverse": false,
-        "align": "start"
+        "maxWidth": "xl"
       }
     },
     {
